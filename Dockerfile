@@ -18,4 +18,4 @@ RUN sudo apt-get update && \
 RUN sudo usermod -aG docker nct-at
 COPY . /home/nct-at/docker-container-updater
 WORKDIR /home/nct-at/docker-container-updater
-CMD ruby main.rb
+CMD bash -c "source ~/.rvm/scripts/rvm && ruby main.rb"
