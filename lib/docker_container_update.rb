@@ -1,0 +1,1 @@
+require_relative 'docker_container_updater/updater'
