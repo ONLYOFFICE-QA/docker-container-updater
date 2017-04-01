@@ -16,6 +16,7 @@ module DockerContainerUpdater
     end
 
     def cleanup_image
+      p 'Cleaning up images'
       `docker stop #{@container_name}`
       `docker rm #{@container_name}`
       `docker rmi #{@image_name}`
@@ -42,7 +43,10 @@ module DockerContainerUpdater
 
     def monitor_version
       loop do
-        if @installed_version != latest_version
+        if @installed_version == latest_version
+          p `Docker image was not updated`
+        else
+          p `Docker image was updated`
           update_container
           run_tests
         end
