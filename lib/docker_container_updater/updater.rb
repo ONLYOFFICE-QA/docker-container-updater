@@ -35,7 +35,7 @@ module DockerContainerUpdater
       `cd ~/RubymineProjects/SharedFunctional; git reset --hard; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments; git reset --hard; git checkout develop; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
-      `cd ~/RubymineProjects/OnlineDocuments && rspec spec/studio/editors_smoke_test/editors_smoke_test_spec.rb`
+      system("cd ~/RubymineProjects/OnlineDocuments && rake editors_smoke")
     end
 
     def update_container
