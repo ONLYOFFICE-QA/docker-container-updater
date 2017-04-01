@@ -47,9 +47,9 @@ module DockerContainerUpdater
     def monitor_version
       loop do
         if @installed_version == latest_version
-          p `Docker image was not updated`
+          p 'Docker image was not updated'
         else
-          p `Docker image was updated`
+          p 'Docker image was updated'
           update_container
           run_tests
         end
