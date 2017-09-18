@@ -35,7 +35,7 @@ module DockerContainerUpdater
       `cd ~/RubymineProjects/SharedFunctional; git reset --hard; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments; git reset --hard; git checkout develop; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
-      system("cd ~/RubymineProjects/OnlineDocuments && rake editors_smoke")
+      system("cd ~/RubymineProjects/OnlineDocuments && SPEC_SERVER_IP=#{my_external_ip} rake editors_smoke")
     end
 
     def update_container
@@ -55,6 +55,13 @@ module DockerContainerUpdater
         end
         sleep 60
       end
+    end
+
+    private
+
+    # @return [String] external ip
+    def my_external_ip
+      open('http://ipinfo.io/ip').read.chop
     end
   end
 end
