@@ -4,8 +4,8 @@ require 'json'
 module DockerContainerUpdater
   class Updater
     def initialize
-      @image_name = 'onlyoffice/4testing-documentserver-integration'
-      @container_name = '4testing-documentserver-integration'
+      @image_name = 'onlyoffice/4testing-documentserver-ie'
+      @container_name = '4testing-documentserver-ie'
       @hub_catcher_url = 'http://67.205.182.89:8088/'
     end
 
