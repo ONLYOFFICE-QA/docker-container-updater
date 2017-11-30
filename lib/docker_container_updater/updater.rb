@@ -6,7 +6,7 @@ module DockerContainerUpdater
     def initialize
       @image_name = 'onlyoffice/4testing-documentserver-ie'
       @container_name = '4testing-documentserver-ie'
-      @hub_catcher_url = 'http://104.236.82.58:8088/'
+      @hub_catcher_url = 'http://qa-services.teamlab.info:8088/'
     end
 
     # @return [Integer] Latest pushed data
