@@ -35,7 +35,7 @@ module DockerContainerUpdater
       `cd ~/RubymineProjects/SharedFunctional; git reset --hard; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments; git reset --hard; git checkout develop; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
-      system("cd ~/RubymineProjects/OnlineDocuments && SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
+      system("cd ~/RubymineProjects/OnlineDocuments && SPEC_SERVER_IP=#{test_example_url} rake generate_reference_images && SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
     end
 
     def update_container
