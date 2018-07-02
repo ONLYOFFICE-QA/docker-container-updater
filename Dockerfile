@@ -1,6 +1,6 @@
 FROM onlyofficetestingrobot/nct-at-testing-node
 
-MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
+LABEL maintainer="shockwavenn@gmail.com"
 
 RUN apt-get update && \
     apt-get -y install \
