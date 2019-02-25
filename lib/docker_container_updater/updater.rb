@@ -26,7 +26,7 @@ module DockerContainerUpdater
       `docker run -itd -p 80:80 --name #{@container_name} -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
       p 'Sleeping for wait for container to start'
       sleep 30
-      `docker exec #{@container_name} sudo supervisorctl start onlyoffice-documentserver:example`
+      `docker exec #{@container_name} sudo supervisorctl start ds:example`
       p 'Sleeping for wait for font generating'
       sleep 60
     end
