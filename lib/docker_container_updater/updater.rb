@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 require 'json'
 
 module DockerContainerUpdater
+  # Class for updating DocumentServer
   class Updater
     def initialize
       @image_name = 'onlyoffice/4testing-documentserver-ie'
@@ -11,7 +14,7 @@ module DockerContainerUpdater
 
     # @return [Integer] Latest pushed data
     def latest_version
-      repo_data = open(@hub_catcher_url).read
+      repo_data = URI.parse(@hub_catcher_url).open.read
       JSON.parse(repo_data)['push_data']['pushed_at']
     end
 
@@ -23,19 +26,26 @@ module DockerContainerUpdater
     end
 
     def start_container
-      `docker run -itd -p 80:80 --name #{@container_name} -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
+      `docker run -itd -p 80:80 --name #{@container_name} \
+       -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
       p 'Sleeping for wait for container to start'
       sleep 30
-      `docker exec #{@container_name} sudo supervisorctl start ds:example`
+      `docker exec #{@container_name} \
+       sudo supervisorctl start onlyoffice-documentserver:example`
       p 'Sleeping for wait for font generating'
       sleep 60
     end
 
     def run_tests
-      `cd ~/RubymineProjects/SharedFunctional; git reset --hard; git pull --prune`
-      `cd ~/RubymineProjects/OnlineDocuments; git reset --hard; git checkout develop; git pull --prune`
+      `cd ~/RubymineProjects/SharedFunctional; \
+       git reset --hard; git pull --prune`
+      `cd ~/RubymineProjects/OnlineDocuments; \
+       git reset --hard; git checkout develop; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
-      system("cd ~/RubymineProjects/OnlineDocuments && SPEC_SERVER_IP=#{test_example_url} rake generate_reference_images && SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
+      system('cd ~/RubymineProjects/OnlineDocuments && '\
+             "SPEC_SERVER_IP=#{test_example_url} "\
+             'rake generate_reference_images && '\
+              "SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
     end
 
     def update_container
@@ -61,7 +71,7 @@ module DockerContainerUpdater
 
     # @return [String] external ip
     def my_external_ip
-      open('http://ipinfo.io/ip').read.chop
+      URI.parse('http://ipinfo.io/ip').open.read.chop
     end
 
     # @return [String] text example url
