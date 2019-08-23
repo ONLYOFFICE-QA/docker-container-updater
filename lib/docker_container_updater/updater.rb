@@ -14,7 +14,7 @@ module DockerContainerUpdater
 
     # @return [Integer] Latest pushed data
     def latest_version
-      repo_data = open(@hub_catcher_url).read
+      repo_data = URI.parse(@hub_catcher_url).open.read
       JSON.parse(repo_data)['push_data']['pushed_at']
     end
 
@@ -71,7 +71,7 @@ module DockerContainerUpdater
 
     # @return [String] external ip
     def my_external_ip
-      open('http://ipinfo.io/ip').read.chop
+      URI.parse('http://ipinfo.io/ip').open.read.chop
     end
 
     # @return [String] text example url
