@@ -47,9 +47,9 @@ module DockerContainerUpdater
     def monitor_version
       loop do
         if @installed_version == latest_version
-          p 'Docker image was not updated'
+          p "Docker image was not updated. #{current_version_info}"
         else
-          p 'Docker image was updated'
+          p "Docker image was updated. #{current_version_info}"
           update_container
           run_tests
         end
@@ -67,6 +67,12 @@ module DockerContainerUpdater
     # @return [String] text example url
     def test_example_url
       "http://#{my_external_ip}"
+    end
+
+    # @return [String] current installed version and latest version from hub
+    def current_version_info
+      "Installed 'pushed_at': #{@installed_version}. "\
+      "Latest 'pushed_at': #{latest_version}"
     end
   end
 end
