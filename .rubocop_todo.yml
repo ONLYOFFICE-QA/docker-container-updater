@@ -11,16 +11,6 @@ Security/Open:
   Exclude:
     - 'lib/docker_container_updater/updater.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'lib/docker_container_update.rb'
-    - 'lib/docker_container_updater/updater.rb'
-    - 'main.rb'
-
 # Offense count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
