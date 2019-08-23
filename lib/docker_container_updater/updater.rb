@@ -2,6 +2,7 @@ require 'open-uri'
 require 'json'
 
 module DockerContainerUpdater
+  # Class for updating DocumentServer
   class Updater
     def initialize
       @image_name = 'onlyoffice/4testing-documentserver-ie'

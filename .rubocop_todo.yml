@@ -11,13 +11,6 @@ Security/Open:
   Exclude:
     - 'lib/docker_container_updater/updater.rb'
 
-# Offense count: 1
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/docker_container_updater/updater.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
