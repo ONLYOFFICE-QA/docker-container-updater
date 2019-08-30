@@ -31,7 +31,7 @@ module DockerContainerUpdater
       p 'Sleeping for wait for container to start'
       sleep 30
       `docker exec #{@container_name} \
-       sudo supervisorctl start onlyoffice-documentserver:example`
+       supervisorctl start all`
       p 'Sleeping for wait for font generating'
       sleep 60
     end
