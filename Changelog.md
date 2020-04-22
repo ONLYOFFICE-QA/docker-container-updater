@@ -5,3 +5,4 @@
 ### New features
 
 * Show more version info in logs
+* Do not update `SharedFunctional` repo
