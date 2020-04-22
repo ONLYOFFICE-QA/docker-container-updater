@@ -37,8 +37,6 @@ module DockerContainerUpdater
     end
 
     def run_tests
-      `cd ~/RubymineProjects/SharedFunctional; \
-       git reset --hard; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments; \
        git reset --hard; git checkout develop; git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
