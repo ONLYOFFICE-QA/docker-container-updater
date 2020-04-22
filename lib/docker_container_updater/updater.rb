@@ -38,7 +38,7 @@ module DockerContainerUpdater
 
     def run_tests
       `cd ~/RubymineProjects/OnlineDocuments; \
-       git reset --hard; git checkout develop; git pull --prune`
+       git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
       system('cd ~/RubymineProjects/OnlineDocuments && '\
              "SPEC_SERVER_IP=#{test_example_url} "\
