@@ -32,6 +32,7 @@ module DockerContainerUpdater
       sleep 30
       `docker exec #{@container_name} \
        supervisorctl start all`
+      enable_exmaple_autostart
       p 'Sleeping for wait for font generating'
       sleep 60
     end
@@ -81,6 +82,14 @@ module DockerContainerUpdater
     def current_version_info
       "Installed 'pushed_at': #{@installed_version}. "\
       "Latest 'pushed_at': #{latest_version}"
+    end
+
+    # Enable autostart of DocumentServer test example
+    # @return [Void]
+    def enable_exmaple_autostart
+      `docker exec #{@container_name} \
+       sed 's,autostart=false,autostart=true,' \
+       -i /etc/supervisor/conf.d/ds-example.conf`
     end
   end
 end
