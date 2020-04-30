@@ -9,13 +9,15 @@ module DockerContainerUpdater
     def initialize
       @image_name = 'onlyoffice/4testing-documentserver-ie'
       @container_name = '4testing-documentserver-ie'
-      @hub_catcher_url = 'http://qa-services.teamlab.info:8088/'
+      @docker_hub_latest_url = 'https://hub.docker.com/v2' \
+                               "/repositories/#{@image_name}" \
+                               '/tags/latest'
     end
 
     # @return [Integer] Latest pushed data
     def latest_version
-      repo_data = URI.parse(@hub_catcher_url).open.read
-      JSON.parse(repo_data)['push_data']['pushed_at']
+      repo_data = URI.parse(@docker_hub_latest_url).open.read
+      JSON.parse(repo_data)['last_updated']
     end
 
     def cleanup_image
