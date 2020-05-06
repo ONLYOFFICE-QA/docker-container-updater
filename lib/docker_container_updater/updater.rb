@@ -12,6 +12,7 @@ module DockerContainerUpdater
       @docker_hub_latest_url = 'https://hub.docker.com/v2' \
                                "/repositories/#{@image_name}" \
                                '/tags/latest'
+      @monitor_version_timeout = 5 * 60
     end
 
     # @return [Integer] Latest pushed data
@@ -64,7 +65,7 @@ module DockerContainerUpdater
           update_container
           run_tests
         end
-        sleep 60
+        sleep(@monitor_version_timeout)
       end
     end
 

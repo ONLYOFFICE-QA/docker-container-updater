@@ -9,3 +9,4 @@
 * Use default branch for `OnlineDocuments` repo
 * Enable autostart of `ds:exmaple`
 * Remove usage of `docker-hub-hook-catcher`
+* Increase timeout for version update monitoring
