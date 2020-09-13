@@ -13,6 +13,7 @@
 * Add `dependabot` config
 * Add rubocop check in CI
 * Add `markdownlint` check in CI
+* Add `yard` task to check that all code is documented
 
 ### Changes
 

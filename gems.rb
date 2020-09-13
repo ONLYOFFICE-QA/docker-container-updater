@@ -5,4 +5,5 @@ source 'https://rubygems.org'
 group :development do
   gem 'overcommit', require: false
   gem 'rubocop', require: false
+  gem 'yard', require: false
 end

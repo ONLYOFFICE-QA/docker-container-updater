@@ -3,6 +3,7 @@
 require 'open-uri'
 require 'json'
 
+# Default namespace for app
 module DockerContainerUpdater
   # Class for updating DocumentServer
   class Updater
@@ -21,6 +22,8 @@ module DockerContainerUpdater
       JSON.parse(repo_data)['last_updated']
     end
 
+    # Remove all old images
+    # @return [nil]
     def cleanup_image
       p 'Cleaning up images'
       `docker stop #{@container_name}`
@@ -28,6 +31,8 @@ module DockerContainerUpdater
       `docker rmi #{@image_name}`
     end
 
+    # Start configured container
+    # @return [nil]
     def start_container
       `docker run -itd -p 80:80 --name #{@container_name} \
        -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
@@ -40,6 +45,8 @@ module DockerContainerUpdater
       sleep 60
     end
 
+    # Run test
+    # @return [nil]
     def run_tests
       `cd ~/RubymineProjects/OnlineDocuments; \
        git pull --prune`
@@ -50,12 +57,17 @@ module DockerContainerUpdater
               "SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
     end
 
+    # Update current run container
+    # @return [nil]
     def update_container
       cleanup_image
       start_container
       @installed_version = latest_version
     end
 
+    # Background method to check if new version of
+    # container is released
+    # @return [nil]
     def monitor_version
       loop do
         if @installed_version == latest_version
