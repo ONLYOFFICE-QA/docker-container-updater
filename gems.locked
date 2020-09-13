@@ -26,6 +26,7 @@ GEM
       parser (>= 2.7.1.4)
     ruby-progressbar (1.10.1)
     unicode-display_width (1.7.0)
+    yard (0.9.25)
 
 PLATFORMS
   ruby
@@ -33,6 +34,7 @@ PLATFORMS
 DEPENDENCIES
   overcommit
   rubocop
+  yard
 
 BUNDLED WITH
    2.1.4
