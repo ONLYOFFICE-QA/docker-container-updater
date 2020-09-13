@@ -11,6 +11,7 @@
 * Remove usage of `docker-hub-hook-catcher`
 * Increase timeout for version update monitoring
 * Add `dependabot` config
+* Add rubocop check in CI
 
 ### Changes
 
