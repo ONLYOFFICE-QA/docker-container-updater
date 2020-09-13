@@ -12,6 +12,7 @@
 * Increase timeout for version update monitoring
 * Add `dependabot` config
 * Add rubocop check in CI
+* Add `markdownlint` check in CI
 
 ### Changes
 
