@@ -11,3 +11,7 @@
 * Remove usage of `docker-hub-hook-catcher`
 * Increase timeout for version update monitoring
 * Add `dependabot` config
+
+### Changes
+
+* Use actual `bundler` in `gems.locked`
