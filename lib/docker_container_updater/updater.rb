@@ -8,8 +8,8 @@ module DockerContainerUpdater
   # Class for updating DocumentServer
   class Updater
     def initialize
-      @image_name = 'onlyoffice/4testing-documentserver-ie'
-      @container_name = '4testing-documentserver-ie'
+      @image_name = 'onlyoffice/4testing-documentserver-ee'
+      @container_name = '4testing-documentserver-ee'
       @docker_hub_latest_url = 'https://hub.docker.com/v2' \
                                "/repositories/#{@image_name}" \
                                '/tags/latest'
