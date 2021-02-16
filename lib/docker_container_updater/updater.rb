@@ -85,7 +85,7 @@ module DockerContainerUpdater
 
     # @return [String] external ip
     def my_external_ip
-      URI.parse('http://ipinfo.io/ip').open.read.chop
+      URI.parse('http://ipinfo.io/ip').open.read.chomp
     end
 
     # @return [String] text example url
