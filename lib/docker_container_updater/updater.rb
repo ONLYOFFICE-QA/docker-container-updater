@@ -37,7 +37,7 @@ module DockerContainerUpdater
       `docker run -itd -p 80:80 --name #{@container_name} \
        -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
       p 'Sleeping for wait for container to start'
-      sleep 30
+      sleep 120
       `docker exec #{@container_name} \
        supervisorctl start all`
       enable_exmaple_autostart
