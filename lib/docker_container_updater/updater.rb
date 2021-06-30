@@ -54,7 +54,7 @@ module DockerContainerUpdater
       system('cd ~/RubymineProjects/OnlineDocuments && '\
              "SPEC_SERVER_IP=#{test_example_url} "\
              'rake generate_reference_images && '\
-              "SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
+             "SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
     end
 
     # Update current run container
@@ -96,7 +96,7 @@ module DockerContainerUpdater
     # @return [String] current installed version and latest version from hub
     def current_version_info
       "Installed 'pushed_at': #{@installed_version}. "\
-      "Latest 'pushed_at': #{latest_version}"
+        "Latest 'pushed_at': #{latest_version}"
     end
 
     # Enable autostart of DocumentServer test example
