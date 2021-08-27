@@ -3,3 +3,6 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   NewCops: enable
 
+# We use `gems.rb` in this project
+Bundler/GemFilename:
+  EnforcedStyle: gems.rb
