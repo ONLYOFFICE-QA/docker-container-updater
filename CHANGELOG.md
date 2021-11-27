@@ -14,6 +14,7 @@
 * Add rubocop check in CI
 * Add `markdownlint` check in CI
 * Add `yard` task to check that all code is documented
+* Enable `WOPI` by default
 
 ### Changes
 
