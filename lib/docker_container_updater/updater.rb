@@ -34,12 +34,10 @@ module DockerContainerUpdater
     # Start configured container
     # @return [nil]
     def start_container
-      `docker run -itd -p 80:80 --name #{@container_name} \
-       -v /opt/onlyoffice/Data:/var/www/onlyoffice/Data #{@image_name}`
+      `#{docker_run_command}`
       p 'Sleeping for wait for container to start'
       sleep 120
-      `docker exec #{@container_name} \
-       supervisorctl start all`
+      `#{enable_test_example_command}`
       enable_exmaple_autostart
       p 'Sleeping for wait for font generating'
       sleep 60
@@ -105,6 +103,21 @@ module DockerContainerUpdater
       `docker exec #{@container_name} \
        sed 's,autostart=false,autostart=true,' \
        -i /etc/supervisor/conf.d/ds-example.conf`
+    end
+
+    # @return [String] command to enable test example
+    def enable_test_example_command
+      "docker exec #{@container_name} supervisorctl start all"
+    end
+
+    # Docker run command for starting continer
+    # @return [String] docker run command
+    def docker_run_command
+      'docker run -itd ' \
+        '-p 80:80 '\
+        "--name #{@container_name} "\
+        '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data '\
+        "#{@image_name}"
     end
   end
 end
