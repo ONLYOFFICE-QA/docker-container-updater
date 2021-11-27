@@ -116,6 +116,7 @@ module DockerContainerUpdater
       'docker run -itd ' \
         '-p 80:80 '\
         "--name #{@container_name} "\
+        '-e WOPI_ENABLED=true ' \
         '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data '\
         "#{@image_name}"
     end
