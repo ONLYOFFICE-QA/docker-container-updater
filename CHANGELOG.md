@@ -19,3 +19,4 @@
 ### Changes
 
 * Use actual `bundler` in `gems.locked`
+* Init and updating using bash script
