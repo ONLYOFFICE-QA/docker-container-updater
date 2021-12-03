@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 docker stop 4testing-documentserver-ee docker-container-updater
 docker rm 4testing-documentserver-ee docker-container-updater
 docker system prune -af
