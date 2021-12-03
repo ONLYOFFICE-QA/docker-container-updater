@@ -89,7 +89,7 @@ module DockerContainerUpdater
     # @return [String] get domain name by external ip
     def my_domain_name
       nslookup_result = `nslookup #{my_external_ip}`
-      nslookup_result.splig(' = ')
+      nslookup_result.split(' = ')[1]
     rescue StandartError => e
       raise "Cannot handle nskookup result: `#{nslookup_result}` with error: `#{e}`"
     end
