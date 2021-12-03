@@ -115,6 +115,7 @@ module DockerContainerUpdater
     def docker_run_command
       'docker run -itd ' \
         '-p 80:80 '\
+        '-p 443:443 '\
         "--name #{@container_name} "\
         '-e WOPI_ENABLED=true ' \
         '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data '\

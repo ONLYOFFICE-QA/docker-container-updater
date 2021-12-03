@@ -15,6 +15,7 @@
 * Add `markdownlint` check in CI
 * Add `yard` task to check that all code is documented
 * Enable `WOPI` by default
+* Add https support on default 443 port
 
 ### Changes
 
