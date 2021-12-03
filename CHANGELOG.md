@@ -7,7 +7,7 @@
 * Show more version info in logs
 * Do not update `SharedFunctional` repo
 * Use default branch for `OnlineDocuments` repo
-* Enable autostart of `ds:exmaple`
+* Enable autostart of `ds:example`
 * Remove usage of `docker-hub-hook-catcher`
 * Increase timeout for version update monitoring
 * Add `dependabot` config
