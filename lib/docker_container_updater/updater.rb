@@ -86,9 +86,17 @@ module DockerContainerUpdater
       URI.parse('http://ipinfo.io/ip').open.read.chomp
     end
 
+    # @return [String] get domain name by external ip
+    def my_domain_name
+      nslookup_result = `nslookup #{my_external_ip}`
+      nslookup_result.splig(' = ')
+    rescue StandartError => e
+      raise "Cannot handle nskookup result: `#{nslookup_result}` with error: `#{e}`"
+    end
+
     # @return [String] text example url
     def test_example_url
-      "http://#{my_external_ip}"
+      "https://#{my_domain_name}"
     end
 
     # @return [String] current installed version and latest version from hub

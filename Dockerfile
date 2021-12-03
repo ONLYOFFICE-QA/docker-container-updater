@@ -7,6 +7,7 @@ RUN apt-get update && \
         apt-transport-https \
         ca-certificates \
         curl \
+        dnsutils \
         software-properties-common
 RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add -
 RUN add-apt-repository \
