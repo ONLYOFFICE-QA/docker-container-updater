@@ -17,6 +17,10 @@
 * Enable `WOPI` by default
 * Add https support on default 443 port
 
+### Fixes
+
+* Fix `markdownlint` failure because of old `nodejs` in CI
+
 ### Changes
 
 * Use actual `bundler` in `gems.locked`
