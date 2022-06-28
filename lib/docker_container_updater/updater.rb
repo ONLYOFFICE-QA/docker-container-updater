@@ -49,9 +49,9 @@ module DockerContainerUpdater
       `cd ~/RubymineProjects/OnlineDocuments; \
        git pull --prune`
       `cd ~/RubymineProjects/OnlineDocuments && bundle update`
-      system('cd ~/RubymineProjects/OnlineDocuments && '\
-             "SPEC_SERVER_IP=#{test_example_url} "\
-             'rake generate_reference_images && '\
+      system('cd ~/RubymineProjects/OnlineDocuments && ' \
+             "SPEC_SERVER_IP=#{test_example_url} " \
+             'rake generate_reference_images && ' \
              "SPEC_SERVER_IP=#{test_example_url} rake editors_smoke")
     end
 
@@ -102,7 +102,7 @@ module DockerContainerUpdater
 
     # @return [String] current installed version and latest version from hub
     def current_version_info
-      "Installed 'pushed_at': #{@installed_version}. "\
+      "Installed 'pushed_at': #{@installed_version}. " \
         "Latest 'pushed_at': #{latest_version}"
     end
 
@@ -123,11 +123,11 @@ module DockerContainerUpdater
     # @return [String] docker run command
     def docker_run_command
       'docker run -itd ' \
-        '-p 80:80 '\
-        '-p 443:443 '\
-        "--name #{@container_name} "\
+        '-p 80:80 ' \
+        '-p 443:443 ' \
+        "--name #{@container_name} " \
         '-e WOPI_ENABLED=true ' \
-        '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data '\
+        '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data ' \
         "#{@image_name}"
     end
   end
