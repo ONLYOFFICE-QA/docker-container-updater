@@ -126,6 +126,7 @@ module DockerContainerUpdater
         '-p 80:80 ' \
         '-p 443:443 ' \
         "--name #{@container_name} " \
+        '-e JWT_ENABLED=false ' \
         '-e WOPI_ENABLED=true ' \
         '-v /opt/onlyoffice/Data:/var/www/onlyoffice/Data ' \
         "#{@image_name}"
