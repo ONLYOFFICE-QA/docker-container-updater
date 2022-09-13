@@ -29,6 +29,7 @@ module DockerContainerUpdater
       `docker stop #{@container_name}`
       `docker rm #{@container_name}`
       `docker rmi #{@image_name}`
+      `docker volume prune -f`
     end
 
     # Start configured container
