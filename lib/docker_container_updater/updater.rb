@@ -49,7 +49,7 @@ module DockerContainerUpdater
     def run_tests
       `cd ~/RubymineProjects/OnlineDocuments; \
        git pull --prune`
-      `cd ~/RubymineProjects/OnlineDocuments && bundle update`
+      `cd ~/RubymineProjects/OnlineDocuments && bundle install`
       system('cd ~/RubymineProjects/OnlineDocuments && ' \
              "SPEC_SERVER_IP=#{test_example_url} " \
              'rake generate_reference_images && ' \
