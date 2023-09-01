@@ -28,3 +28,4 @@
 * Use actual `bundler` in `gems.locked`
 * Init and updating using bash script
 * Check `dependabot` at 8:00 Moscow time daily
+* Use latest `ruby-3.2` to check code-style
