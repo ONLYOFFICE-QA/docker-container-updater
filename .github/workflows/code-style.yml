@@ -1,7 +1,7 @@
-name: Code Style
+name: Ruby specific linting
 on: [push]
 jobs:
-  code-style:
+  ruby-linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
