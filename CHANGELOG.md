@@ -21,7 +21,6 @@
 ### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
-* Fix `iptable` failure on docker install
 
 ### Changes
 
