@@ -1,7 +1,7 @@
 name: Code Style
 on: [push]
 jobs:
-  build:
+  code-style:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
