@@ -17,6 +17,7 @@
 * Enable `WOPI` by default
 * Add https support on default 443 port
 * Add `yamllint` check in CI
+* Add CI task to check docker build
 
 ### Fixes
 
