@@ -33,7 +33,7 @@ GEM
       parser (>= 3.3.0.4)
     ruby-progressbar (1.13.0)
     unicode-display_width (2.5.0)
-    yard (0.9.35)
+    yard (0.9.36)
 
 PLATFORMS
   ruby
