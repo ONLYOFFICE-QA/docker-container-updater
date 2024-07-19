@@ -19,6 +19,7 @@
 * Add `yamllint` check in CI
 * Add CI task to check docker build
 * Add `dependabot` check for `GitHub Actions`
+* Add `hadolint` check in CI
 
 ### Fixes
 
