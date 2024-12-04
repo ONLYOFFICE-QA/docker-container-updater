@@ -16,10 +16,21 @@ module DockerContainerUpdater
       @monitor_version_timeout = 5 * 60
     end
 
+    # @return [Hash] information about `latest` tag
+    def latest_info
+      repo_data = URI.parse(@docker_hub_latest_url).open.read
+      JSON.parse(repo_data)
+    end
+
     # @return [Integer] Latest pushed data
     def latest_version
-      repo_data = URI.parse(@docker_hub_latest_url).open.read
-      JSON.parse(repo_data)['last_updated']
+      latest_info['last_updated']
+    end
+
+    # @return [True, False] is latest build have amd64 arch
+    def latest_has_amd64?
+      architectures = latest_info['images'].map { |image| image['architecture'] }
+      architectures.include?('amd64')
     end
 
     # Remove all old images
@@ -69,18 +80,25 @@ module DockerContainerUpdater
     # @return [nil]
     def monitor_version
       loop do
-        if @installed_version == latest_version
-          p "Docker image was not updated. #{current_version_info}"
-        else
-          p "Docker image was updated. #{current_version_info}"
-          update_container
-          run_tests
-        end
+        check_version_update
         sleep(@monitor_version_timeout)
       end
     end
 
     private
+
+    # Check if there is a newer version of docker container
+    def check_version_update
+      if @installed_version == latest_version
+        p "Docker image was not updated. #{current_version_info}"
+      elsif latest_has_amd64?
+        p "Docker image was updated. #{current_version_info}"
+        update_container
+        run_tests
+      else
+        p 'Latest Docker image was updated, but do not have amd64 version'
+      end
+    end
 
     # @return [String] external ip
     def my_external_ip
