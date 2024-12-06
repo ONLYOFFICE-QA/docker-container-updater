@@ -31,3 +31,4 @@
 * Init and updating using bash script
 * Check `dependabot` at 8:00 Moscow time daily
 * Use latest `ruby-3.3` to check code-style
+* Use `logger` instead of direct print statements

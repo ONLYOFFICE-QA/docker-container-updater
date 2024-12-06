@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'logger'
 require 'open-uri'
 require 'json'
 
@@ -14,6 +15,7 @@ module DockerContainerUpdater
                                "/repositories/#{@image_name}" \
                                '/tags/latest'
       @monitor_version_timeout = 5 * 60
+      @logger = Logger.new($stdout)
     end
 
     # @return [Hash] information about `latest` tag
@@ -36,22 +38,23 @@ module DockerContainerUpdater
     # Remove all old images
     # @return [nil]
     def cleanup_image
-      p 'Cleaning up images'
+      @logger.info('Cleaning up images')
       `docker stop #{@container_name}`
       `docker rm #{@container_name}`
       `docker rmi #{@image_name}`
       `docker volume prune -f`
+      @logger.info('Finished cleaning up old images')
     end
 
     # Start configured container
     # @return [nil]
     def start_container
       `#{docker_run_command}`
-      p 'Sleeping for wait for container to start'
+      @logger.info('Sleeping for wait for container to start')
       sleep 120
       `#{enable_test_example_command}`
       enable_exmaple_autostart
-      p 'Sleeping for wait for font generating'
+      @logger.info('Sleeping for wait for font generating')
       sleep 60
     end
 
@@ -90,13 +93,13 @@ module DockerContainerUpdater
     # Check if there is a newer version of docker container
     def check_version_update
       if @installed_version == latest_version
-        p "Docker image was not updated. #{current_version_info}"
+        @logger.info("Docker image was not updated. #{current_version_info}")
       elsif latest_has_amd64?
-        p "Docker image was updated. #{current_version_info}"
+        @logger.info("Docker image was updated. #{current_version_info}")
         update_container
         run_tests
       else
-        p 'Latest Docker image was updated, but do not have amd64 version'
+        @logger.warn('Latest Docker image was updated, but do not have amd64 version')
       end
     end
 
